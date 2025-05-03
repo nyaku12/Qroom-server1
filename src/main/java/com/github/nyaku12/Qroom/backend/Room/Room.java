@@ -1,4 +1,4 @@
-package com.github.nyaku12.Qroom.backend;
+package com.github.nyaku12.Qroom.backend.Room;
 
 import jakarta.persistence.*;
 

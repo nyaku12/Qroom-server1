@@ -1,11 +1,9 @@
-package com.github.nyaku12.Qroom.backend;
+package com.github.nyaku12.Qroom.backend.Room;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RoomService {
@@ -17,18 +15,18 @@ public class RoomService {
     }
 
     public Room saveRoom(Room room){
-        if(roomrepository.findByName(room.getName()).isEmpty()){
+        if(roomrepository.findByName(room.getName()).isEmpty() && !room.getName().equals("")){
             return roomrepository.save(room);
         }
         else{
-            return new Room("already exist", null);
+            return new Room("already exist or null nickname", null);
         }
     }
 
 
     //возвращает true при успешном удалении, false  в иных случаях
     public Boolean deleteRoomByName(String name){
-        if(roomrepository.findByName(name) != null){
+        if(!roomrepository.findByName(name).isEmpty()){
             roomrepository.deleteByName(name);
             return true;
         }
