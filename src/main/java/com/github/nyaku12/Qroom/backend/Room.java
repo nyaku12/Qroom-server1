@@ -3,7 +3,7 @@ package com.github.nyaku12.Qroom.backend;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ROOM")
+@Table(name = "ROOMS")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +15,10 @@ public class Room {
 
     public void print(){
         System.out.println(this.name);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {

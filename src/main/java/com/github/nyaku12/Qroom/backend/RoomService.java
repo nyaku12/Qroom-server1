@@ -17,7 +17,11 @@ public class RoomService {
     }
 
     public Room saveRoom(Room room){
-        return roomrepository.save(room);
+
+        if(roomrepository.findByName(room.getName()).isEmpty()){
+            return roomrepository.save(room);
+        }
+        else return null;
     }
 
 
