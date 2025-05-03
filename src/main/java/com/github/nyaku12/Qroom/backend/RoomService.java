@@ -17,11 +17,12 @@ public class RoomService {
     }
 
     public Room saveRoom(Room room){
-
         if(roomrepository.findByName(room.getName()).isEmpty()){
             return roomrepository.save(room);
         }
-        else return null;
+        else{
+            return new Room("already exist", null);
+        }
     }
 
 

@@ -13,6 +13,11 @@ public class Room {
     // Конструкторы, геттеры и сеттеры
     public Room(){};
 
+    public Room(String name, String password){
+        this.name = name;
+        this.password = password;
+    };
+
     public void print(){
         System.out.println(this.name);
     }
