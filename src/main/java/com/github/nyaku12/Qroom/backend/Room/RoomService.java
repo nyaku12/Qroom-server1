@@ -19,7 +19,7 @@ public class RoomService {
             return roomrepository.save(room);
         }
         else{
-            return new Room("already exist or null nickname", null);
+            return new Room("ERR: already exist or null nickname", null);
         }
     }
 

@@ -12,6 +12,11 @@ public class User {
     private String username;
     private int room_id;
 
+    public User(String username, int room_id){
+        this.room_id = room_id;
+        this.username = username;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
