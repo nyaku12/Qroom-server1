@@ -10,9 +10,14 @@ public class UserService {
     @Autowired
     private UserRepository userrepository;
     public User saveUser(User user){
-        if(userrepository.findByName(user.getUsername()).isEmpty()){
-            return userrepository.save(user);
+        return userrepository.save(user);
+    }
+
+    public Boolean deleteUserById(long id){
+        if(userrepository.findById(id).isPresent()){
+            userrepository.deleteById(id);
+            return true;
         }
-        return new User("ERR: Empty Username", 12);
+        return false;
     }
 }

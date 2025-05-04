@@ -12,6 +12,8 @@ public class User {
     private String username;
     private int room_id;
 
+    public User (){};
+
     public User(String username, int room_id){
         this.room_id = room_id;
         this.username = username;
@@ -23,6 +25,10 @@ public class User {
 
     public void setRoom_id(int room_id) {
         this.room_id = room_id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public int getRoom_id() {

@@ -15,7 +15,7 @@ public class RoomService {
     }
 
     public Room saveRoom(Room room){
-        if(roomrepository.findByName(room.getName()).isEmpty() && !room.getName().equals("")){
+        if(roomrepository.findByName(room.getName()).isEmpty() && !room.getName().isEmpty()){
             return roomrepository.save(room);
         }
         else{

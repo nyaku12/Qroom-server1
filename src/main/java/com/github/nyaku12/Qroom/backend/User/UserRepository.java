@@ -9,7 +9,5 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    List<User> findByName(String Name);
-    @Transactional
-    void deleteByName(String Name);
+
 }
