@@ -1,5 +1,6 @@
 package com.github.nyaku12.Qroom.backend.Room;
 
+import com.github.nyaku12.Qroom.backend.DTO.UserAnswerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,11 @@ public class RoomController {
         room.setPassword(password);
         room.setName(name);
         return (roomService.saveRoom(room));
+    }
+
+    @PostMapping("/get-answers")
+    public List<UserAnswerDTO>  getAnswers (@RequestParam long room_id){
+        return roomService.answersByRoom_id(room_id);
     }
 
 }

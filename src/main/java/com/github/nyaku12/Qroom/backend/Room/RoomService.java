@@ -1,5 +1,6 @@
 package com.github.nyaku12.Qroom.backend.Room;
 
+import com.github.nyaku12.Qroom.backend.DTO.UserAnswerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,9 @@ public class RoomService {
             return true;
         }
         return false;
+    }
+
+    public List<UserAnswerDTO> answersByRoom_id(long room_id){
+        return roomrepository.findUserAnswersByRoomId(room_id);
     }
 }
