@@ -11,14 +11,14 @@ public class Answer {
     private long Id;
     private String answ;
     private long user_id;
-    private long room_id;
+    private long roomId;
 
     public Answer(){};
 
     public Answer(String answ, long user_id, long room_id) {
         this.answ = answ;
         this.user_id = user_id;
-        this.room_id = room_id;
+        this.roomId = room_id;
     }
 
     public void setAnsw(String answ) {
@@ -29,8 +29,8 @@ public class Answer {
         this.user_id = user_id;
     }
 
-    public void setRoom_id(long room_id) {
-        this.room_id = room_id;
+    public void setRoomId(long roomId) {
+        this.roomId = roomId;
     }
 
     public String getAnsw() {
@@ -41,7 +41,7 @@ public class Answer {
         return user_id;
     }
 
-    public long getRoom_id() {
-        return room_id;
+    public long getRoomId() {
+        return roomId;
     }
 }

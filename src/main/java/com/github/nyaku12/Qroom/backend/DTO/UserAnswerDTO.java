@@ -1,16 +1,19 @@
 package com.github.nyaku12.Qroom.backend.DTO;
 
 public class UserAnswerDTO {
-    private Long room_id;
+    private Long userId;
+    private String username;
     private String answer;
 
+    public UserAnswerDTO(){};
+
     public UserAnswerDTO(Long userId, String answer) {
-        this.room_id = userId;
+        this.userId = userId;
         this.answer = answer;
     }
 
-    public Long getRoom_id() {
-        return room_id;
+    public Long getUserId() {
+        return userId;
     }
 
     public String getAnswer() {

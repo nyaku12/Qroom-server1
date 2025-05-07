@@ -1,8 +1,11 @@
 package com.github.nyaku12.Qroom.backend.Room;
 
+import com.github.nyaku12.Qroom.backend.Answer.AnswerRepository;
 import com.github.nyaku12.Qroom.backend.DTO.UserAnswerDTO;
+import com.github.nyaku12.Qroom.backend.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,6 +13,10 @@ import java.util.List;
 public class RoomService {
     @Autowired
     private RoomRepository roomrepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private AnswerRepository answerRepository;
 
     public List<Room> testroomRepository(){
         return(roomrepository.findByName("Ivan"));
@@ -24,14 +31,20 @@ public class RoomService {
         }
     }
 
+    public Room findByName(String name){
+        return roomrepository.findByName(name).get(0);
+    }
 
+
+    @Transactional
     //возвращает true при успешном удалении, false  в иных случаях
-    public Boolean deleteRoomByName(String name){
+    public String deleteRoomByName(String name){
         if(!roomrepository.findByName(name).isEmpty()){
+            userRepository.deleteByRoomId(roomrepository.findByName(name).get(0).getId());
+            answerRepository.deleteByRoomId(roomrepository.findByName(name).get(0).getId());
             roomrepository.deleteByName(name);
-            return true;
         }
-        return false;
+        return "no such room";
     }
 
     public List<UserAnswerDTO> answersByRoom_id(long room_id){

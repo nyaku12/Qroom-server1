@@ -23,8 +23,8 @@ public class RoomController {
 
     @DeleteMapping("/delete")
     public String deleteRoom(@RequestParam String name){
-        if(roomService.deleteRoomByName(name)) return "Succes";
-        else return "There's no such name";
+        long room_id = roomService.findByName(name).getId();
+        return (roomService.deleteRoomByName(name));
     }
 
     @PostMapping("/create")

@@ -10,12 +10,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
-    private int room_id;
+    private int roomId;
 
     public User (){};
 
     public User(String username, int room_id){
-        this.room_id = room_id;
+        this.roomId = room_id;
         this.username = username;
     }
 
@@ -23,16 +23,16 @@ public class User {
         this.username = username;
     }
 
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     public Long getId() {
         return id;
     }
 
-    public int getRoom_id() {
-        return room_id;
+    public int getRoomId() {
+        return roomId;
     }
 
     public String getUsername() {
