@@ -10,14 +10,14 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String answ;
-    private long user_id;
+    private long userId;
     private long roomId;
 
     public Answer(){};
 
     public Answer(String answ, long user_id, long room_id) {
         this.answ = answ;
-        this.user_id = user_id;
+        this.userId = user_id;
         this.roomId = room_id;
     }
 
@@ -26,7 +26,7 @@ public class Answer {
     }
 
     public void setUser_id(long user_id) {
-        this.user_id = user_id;
+        this.userId = user_id;
     }
 
     public void setRoomId(long roomId) {
@@ -38,7 +38,7 @@ public class Answer {
     }
 
     public long getUser_id() {
-        return user_id;
+        return userId;
     }
 
     public long getRoomId() {

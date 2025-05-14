@@ -7,13 +7,18 @@ public class UserAnswerDTO {
 
     public UserAnswerDTO(){};
 
-    public UserAnswerDTO(Long userId, String answer) {
+    public UserAnswerDTO(Long userId, String username, String answer) {
         this.userId = userId;
         this.answer = answer;
+        this.username = username;
     }
 
     public Long getUserId() {
         return userId;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getAnswer() {

@@ -15,7 +15,7 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     @Transactional
     void deleteByName(String Name);
 
-    @Query(value = "SELECT u.id AS user_id, a.answ AS answ " +
+    @Query(value = "SELECT u.id AS user_id, u.username AS username, a.answ AS answ " +
             "FROM users u " +
             "JOIN answers a ON u.id = a.user_id " +
             "WHERE u.room_id = :roomId", nativeQuery = true)
