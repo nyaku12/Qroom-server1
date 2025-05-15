@@ -59,6 +59,10 @@ public class RoomService {
         return "no such room";
     }
 
+    public Integer countUsersByRoomId(Long id){
+        return roomrepository.countUsersByRoomId(id);
+    }
+
     public List<UserAnswerDTO> answersByRoom_id(long room_id){
         return roomrepository.findUserAnswersByRoomId(room_id);
     }

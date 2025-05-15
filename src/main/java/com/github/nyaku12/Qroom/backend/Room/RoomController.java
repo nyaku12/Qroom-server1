@@ -39,6 +39,10 @@ public class RoomController {
     public List<UserAnswerDTO>  getAnswers (@RequestParam long room_id){
         return roomService.answersByRoom_id(room_id);
     }
+    @GetMapping("/get-users-ammount")
+    public Integer getUsersAmount(@RequestParam long room_id){
+        return roomService.countUsersByRoomId(room_id);
+    }
 
 }
 
