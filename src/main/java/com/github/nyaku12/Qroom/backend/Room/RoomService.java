@@ -47,6 +47,18 @@ public class RoomService {
         return "no such room";
     }
 
+    @Transactional
+    //возвращает true при успешном удалении, false  в иных случаях
+    public String deleteRoomById(Long id){
+        if(!roomrepository.findById(id).isEmpty()){
+            userRepository.deleteByRoomId(id);
+            answerRepository.deleteByRoomId(id);
+            roomrepository.deleteById(id);
+            return "Succes";
+        }
+        return "no such room";
+    }
+
     public List<UserAnswerDTO> answersByRoom_id(long room_id){
         return roomrepository.findUserAnswersByRoomId(room_id);
     }
