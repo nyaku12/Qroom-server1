@@ -16,11 +16,6 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    @GetMapping
-    public List<Room> testDB(){
-        return roomService.testroomRepository();
-    }
-
     @DeleteMapping("/delete")
     public String deleteRoom(@RequestParam Long room_id){
         return (roomService.deleteRoomById(room_id));
@@ -44,5 +39,9 @@ public class RoomController {
         return roomService.countUsersByRoomId(room_id);
     }
 
+    @GetMapping("/get-room-by-name")
+    public Room getRoomByName(@RequestParam String name){
+        return roomService.findByName(name);
+    }
 }
 

@@ -18,12 +18,12 @@ public class RoomService {
     @Autowired
     private AnswerRepository answerRepository;
 
-    public List<Room> testroomRepository(){
+    public Room testroomRepository(){
         return(roomrepository.findByName("Ivan"));
     }
 
     public Room saveRoom(Room room){
-        if(roomrepository.findByName(room.getName()).isEmpty() && !room.getName().isEmpty()){
+        if(roomrepository.findByName(room.getName()) == null && !room.getName().isEmpty()){
             return roomrepository.save(room);
         }
         else{
@@ -32,16 +32,16 @@ public class RoomService {
     }
 
     public Room findByName(String name){
-        return roomrepository.findByName(name).get(0);
+        return roomrepository.findByName(name);
     }
 
 
     @Transactional
     //возвращает true при успешном удалении, false  в иных случаях
     public String deleteRoomByName(String name){
-        if(!roomrepository.findByName(name).isEmpty()){
-            userRepository.deleteByRoomId(roomrepository.findByName(name).get(0).getId());
-            answerRepository.deleteByRoomId(roomrepository.findByName(name).get(0).getId());
+        if(roomrepository.findByName(name) != null){
+            userRepository.deleteByRoomId(roomrepository.findByName(name).getId());
+            answerRepository.deleteByRoomId(roomrepository.findByName(name).getId());
             roomrepository.deleteByName(name);
         }
         return "no such room";

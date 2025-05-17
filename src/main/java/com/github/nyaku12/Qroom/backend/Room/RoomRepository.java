@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long> {
-    List<Room> findByName(String Name);
+    Room findByName(String Name);
     @Transactional
     void deleteByName(String Name);
 
@@ -25,4 +25,5 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
 
     @Query(value = "SELECT COUNT(*) FROM users WHERE room_id = :room_id", nativeQuery = true)
     int countUsersByRoomId(@Param("room_id") Long roomId);
+
 }
