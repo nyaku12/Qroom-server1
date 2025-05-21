@@ -16,29 +16,32 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    @GetMapping
-    public List<Room> testDB(){
-        return roomService.testroomRepository();
-    }
-
     @DeleteMapping("/delete")
-    public String deleteRoom(@RequestParam String name){
-        long room_id = roomService.findByName(name).getId();
-        return (roomService.deleteRoomByName(name));
+    public String deleteRoom(@RequestParam Long room_id){
+        return (roomService.deleteRoomById(room_id));
     }
 
     @PostMapping("/create")
-    public Room createRoom(@RequestParam String name,@RequestParam  String password){
+    public Room createRoom(@RequestParam String name, @RequestParam String password) {
         Room room = new Room();
         room.setPassword(password);
         room.setName(name);
-        return (roomService.saveRoom(room));
+        Room savedRoom = roomService.saveRoom(room);
+        return savedRoom; // Вернем объект комнаты, чтобы клиент мог получить данные о комнате
     }
 
     @PostMapping("/get-answers")
     public List<UserAnswerDTO>  getAnswers (@RequestParam long room_id){
         return roomService.answersByRoom_id(room_id);
     }
+    @GetMapping("/get-users-ammount")
+    public Integer getUsersAmount(@RequestParam long room_id){
+        return roomService.countUsersByRoomId(room_id);
+    }
 
+    @GetMapping("/get-room-by-name")
+    public Room getRoomByName(@RequestParam String name){
+        return roomService.findByName(name);
+    }
 }
 
