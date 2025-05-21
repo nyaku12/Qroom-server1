@@ -1,0 +1,44 @@
+Rooms{
+    create - POST /api/rooms/create HTTP/1.1
+             Host: localhost:8080
+             Content-Type: application/x-www-form-urlencoded
+             Content-Length: 30
+
+             name=example_name&password=example_password
+             //returns Room obj
+
+    delete - DELETE /api/rooms/delete HTTP/1.1
+             Host: localhost:8080
+             Content-Type: application/x-www-form-urlencoded
+             Content-Length: 20
+
+             name=example_name
+             //returns succes or ERR, delets ALL info about room
+
+    get answers - POST /api/rooms/get-answers HTTP/1.1
+                  Host: localhost:8080
+                  Content-Type: application/x-www-form-urlencoded
+                  Content-Length: 9
+
+                  room_id=room_id_int
+
+                  //returns UserAnswerDTO obj
+}
+Answers{
+    create - POST /api/answers/create HTTP/1.1
+             Host: localhost:8080
+             Content-Type: application/x-www-form-urlencoded
+             Content-Length: 39
+
+             room_id=2&user_id=3&answ=example_answer
+             //return Answer obj
+}
+Users{
+    create - POST /api/users/create HTTP/1.1
+             Host: localhost:8080
+             Content-Type: application/x-www-form-urlencoded
+             Content-Length: 31
+
+             username=example_name&room_id=room_id_int
+             //returns User obj
+}
