@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long> {
-    Room findByName(String Name);
+    Room  findByName(String Name);
     @Transactional
     void deleteByName(String Name);
 
